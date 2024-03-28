@@ -17,13 +17,19 @@ module ActiveStorage
       end
     end
 
-    def download(key)
-      instrument(:streaming_download, key: key) do
-        io = StringIO.new(store.fetch(key))
-        io.set_encoding(io.string.encoding)
-        io
-      rescue KeyError
-        raise ActiveStorage::FileNotFoundError
+    def download(key, &block)
+      if block_given?
+        instrument(:streaming_download, key: key) do
+          stream key, &block
+        end
+      else
+        instrument(:download, key: key) do
+          io = StringIO.new(store.fetch(key))
+          io.set_encoding(io.string.encoding)
+          io
+        rescue KeyError
+          raise ActiveStorage::FileNotFoundError
+        end
       end
     end
 
@@ -48,6 +54,17 @@ module ActiveStorage
         # FIXME: - this should be a URL that can be used to directly download the file
         "memory://#{key}"
       end
+    end
+
+    private
+
+    def stream(key)
+      io = StringIO.new(store.fetch(key))
+      while data = io.read(5.megabytes)
+        yield data
+      end
+    rescue KeyError
+      raise ActiveStorage::FileNotFoundError
     end
   end
 end
