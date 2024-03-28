@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    activestorage-memory (0.1.0)
+    activestorage-memory (0.1.1)
 
 GEM
   remote: https://rubygems.org/
