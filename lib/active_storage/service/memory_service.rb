@@ -1,0 +1,53 @@
+# frozen_string_literal: true
+
+module ActiveStorage
+  # ActiveStorage in-memory service
+  class Service::MemoryService < ActiveStorage::Service
+    attr_reader :store
+
+    def initialize(**config)
+      super
+      @store = {}
+      @config = config
+    end
+
+    def upload(key, io, **)
+      instrument(:upload, key: key) do
+        store[key] = io.read
+      end
+    end
+
+    def download(key)
+      instrument(:streaming_download, key: key) do
+        io = StringIO.new(store.fetch(key))
+        io.set_encoding(io.string.encoding)
+        io
+      rescue KeyError
+        raise ActiveStorage::FileNotFoundError
+      end
+    end
+
+    def delete(key)
+      instrument(:delete, key: key) do
+        store.delete(key)
+      rescue KeyError
+        # Ignore key errors
+      end
+    end
+
+    def exist?(key)
+      instrument(:exist, key: key) do |payload|
+        answer = store.key?(key)
+        payload[:exist] = answer
+        answer
+      end
+    end
+
+    def url(key)
+      instrument(:url, key: key) do
+        # FIXME: - this should be a URL that can be used to directly download the file
+        "memory://#{key}"
+      end
+    end
+  end
+end
