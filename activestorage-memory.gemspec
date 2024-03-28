@@ -3,17 +3,15 @@
 require_relative 'lib/active_storage/memory/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'active_storage-memory'
+  spec.name          = 'activestorage-memory'
   spec.version       = ActiveStorage::Memory::VERSION
   spec.authors       = ['kykt35']
   spec.email         = ['kykt35@gmail.com']
 
-  spec.summary       = 'Rails ActiveStorage in-memory  service adopter.'
+  spec.summary       = 'Rails ActiveStorage in-memory service adopter.'
   spec.homepage      = 'https://github.com/kykt35/activestorage-memory'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
-
-  spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/kykt35/activestorage-memory'
@@ -29,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Uncomment to register a new dependency of your gem
-  spec.add_development_dependency 'rails', '>= 7.0.0'
+  spec.add_development_dependency 'rails', '~> 7.0', '>= 7.0.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   # spec.add_dependency "example-gem", "~> 1.0"
 

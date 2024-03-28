@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_storage-memory (0.1.0)
+    activestorage-memory (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -195,8 +195,8 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  active_storage-memory!
-  rails (>= 7.0.0)
+  activestorage-memory!
+  rails (~> 7.0, >= 7.0.0)
   rake (~> 13.0)
   rspec (~> 3.0)
 
