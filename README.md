@@ -34,9 +34,9 @@ To use the Memory service in test, you add the following to config/environments/
 config.active_storage.service = :memory
 ```
 
-In Active Storage's analyzer feature, asynchronous jobs are executed. So it is recommended to set the queue adapter to async for test.
+In Active Storage's analyzer feature, asynchronous jobs are executed. So you should set the queue adapter to inline at config/environments/test.
 ```
-  config.active_job.queue_adapter = :async
+  config.active_job.queue_adapter = :inline
 ```
 
 You can read more about Active Storage in the Active Storage Overview guide.
