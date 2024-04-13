@@ -5,7 +5,7 @@ RSpec.describe ActiveStorage::Service::MemoryService do
   let(:content) { 'content' }
   let(:io) { StringIO.new(content) }
   let(:key) { 'key' }
-  let(:host) { 'example.com'}
+  let(:host) { 'example.com' }
 
   before do
     ActiveStorage::Current.url_options = { host: host }
@@ -76,7 +76,7 @@ RSpec.describe ActiveStorage::Service::MemoryService do
     let(:filename) { 'filename' }
     let(:content_type) { 'image/jpeg' }
     let(:content_length) { content.size }
-    let(:checksum) {  OpenSSL::Digest.new('md5', content).base64digest }
+    let(:checksum) { OpenSSL::Digest.new('md5', content).base64digest }
     let(:service_name) { 'memory' }
     let(:expires_in) { 5.minutes }
 
@@ -85,7 +85,7 @@ RSpec.describe ActiveStorage::Service::MemoryService do
     end
 
     it 'returns a memory url' do
-      expect(service.url(key, expires_in:, filename:, content_type:)).to start_with("http://#{host}/")
+      expect(service.url(key, expires_in: expires_in, filename: filename, content_type: content_type)).to start_with("http://#{host}/")
     end
   end
 
