@@ -2,8 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ActiveStorage::Memory::MemoryController, type: :request do
-  # routes { ActiveStorage::Memory::Engine.routes }
+RSpec.describe Activestorage::Memory::MemoryController, type: :request do
   let(:key) { 'file_key' }
   let(:content) { 'content' }
   let(:filename) { 'file.jpg' }

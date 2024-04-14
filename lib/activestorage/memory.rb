@@ -3,7 +3,7 @@
 require_relative 'memory/version'
 require_relative 'memory/engine'
 
-module ActiveStorage
+module Activestorage
   module Memory
     class Error < StandardError; end
     # Your code goes here...

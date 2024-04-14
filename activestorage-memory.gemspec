@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/active_storage/memory/version'
+require_relative 'lib/activestorage/memory/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'active_storage-memory'
-  spec.version       = ActiveStorage::Memory::VERSION
+  spec.name          = 'activestorage-memory'
+  spec.version       = Activestorage::Memory::VERSION
   spec.authors       = ['kykt35']
   spec.email         = ['kykt35@gmail.com']
 

@@ -84,7 +84,7 @@ module ActiveStorage
     end
 
     def url_helpers
-      @url_helpers ||= ActiveStorage::Memory::Engine.routes.url_helpers
+      @url_helpers ||= Activestorage::Memory::Engine.routes.url_helpers
     end
 
     def generate_verified_token(key, expires_in:, content_type:, content_length:, checksum:)
