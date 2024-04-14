@@ -39,6 +39,15 @@ In Active Storage's analyzer feature, asynchronous jobs are executed. So you sho
   config.active_job.queue_adapter = :inline
 ```
 
+If you are conducting file downloads and uploads during system testing or integration testing, please add the following to the routing.
+
+``` config/routes.rb
+
+  mount ActiveStorage::Memory::Engine => "/" if Rails.env.test?
+
+```
+
+
 You can read more about Active Storage in the Active Storage Overview guide.
 
 
