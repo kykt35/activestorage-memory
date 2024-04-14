@@ -1,8 +1,15 @@
+require 'rails_helper'
+
 RSpec.describe ActiveStorage::Service::MemoryService do
   let(:service) { ActiveStorage::Service::MemoryService.new }
   let(:content) { 'content' }
   let(:io) { StringIO.new(content) }
   let(:key) { 'key' }
+  let(:host) { 'example.com' }
+
+  before do
+    ActiveStorage::Current.url_options = { host: host }
+  end
 
   describe '#upload' do
     it 'stores by key' do
@@ -65,13 +72,28 @@ RSpec.describe ActiveStorage::Service::MemoryService do
     end
   end
 
-  describe '#url' do
+  describe '#url_for_direct_upload' do
+    let(:filename) { 'filename' }
+    let(:content_type) { 'image/jpeg' }
+    let(:content_length) { content.size }
+    let(:checksum) { OpenSSL::Digest.new('md5', content).base64digest }
+    let(:service_name) { 'memory' }
+    let(:expires_in) { 5.minutes }
+
     before do
       service.upload(key, io)
     end
 
     it 'returns a memory url' do
-      expect(service.url(key)).to eq("memory://#{key}")
+      expect(service.url(key, expires_in: expires_in, filename: filename, content_type: content_type)).to start_with("http://#{host}/")
+    end
+  end
+
+  describe '#headers_for_direct_upload' do
+    let(:content_type) { 'image/jpeg' }
+
+    it 'returns content type' do
+      expect(service.headers_for_direct_upload(key, content_type: content_type)).to eq('Content-Type' => content_type)
     end
   end
 end
