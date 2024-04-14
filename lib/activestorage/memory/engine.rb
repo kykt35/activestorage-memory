@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module ActiveStorage::Memory
+module Activestorage::Memory
   class Engine < ::Rails::Engine
-    isolate_namespace ActiveStorage::Memory
+    isolate_namespace Activestorage::Memory
   end
 end

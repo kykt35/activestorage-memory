@@ -1,5 +1,5 @@
 require 'rails/all'
-require 'active_storage/memory'
+require 'activestorage/memory'
 require 'active_storage/service/memory_service'
 
 RSpec.configure do |config|

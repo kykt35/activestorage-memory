@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount ActiveStorage::Memory::Engine => "/"
+  mount Activestorage::Memory::Engine => "/"
 end

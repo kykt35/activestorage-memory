@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ActiveStorage::Memory
+module Activestorage::Memory
   class MemoryController < ActiveStorage::BaseController
     skip_forgery_protection
 

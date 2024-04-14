@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_storage-memory (0.2.0)
+    activestorage-memory (0.2.0)
       rails (~> 7.0, >= 7.0.0)
 
 GEM
@@ -123,7 +123,7 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.0)
+    nio4r (2.7.1)
     nokogiri (1.16.2-x86_64-darwin)
       racc (~> 1.4)
     psych (5.1.2)
@@ -204,7 +204,7 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  active_storage-memory!
+  activestorage-memory!
   debug
   rspec-rails (~> 6.0)
   sqlite3
