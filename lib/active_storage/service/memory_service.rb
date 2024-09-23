@@ -42,6 +42,14 @@ module ActiveStorage
       end
     end
 
+    def delete_prefixed(prefix)
+      instrument :delete_prefixed, prefix: prefix do
+        store.each_keys do |key|
+          store.delete(key) if key.start_with?(prefix)
+        end
+      end
+    end
+
     def exist?(key)
       instrument(:exist, key: key) do |payload|
         answer = store.key?(key)
