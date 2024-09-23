@@ -44,7 +44,7 @@ module ActiveStorage
 
     def delete_prefixed(prefix)
       instrument :delete_prefixed, prefix: prefix do
-        store.each_keys do |key|
+        store.each_key do |key|
           store.delete(key) if key.start_with?(prefix)
         end
       end
