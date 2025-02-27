@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.test_files = Dir["spec/**/*"]
 
-  spec.add_dependency 'rails', '~> 7.0', '>= 7.0.0'
+  spec.add_dependency 'rails', '~> 8.0'
   spec.add_development_dependency 'rspec-rails', '~> 6.0'
 
   # For more information and examples about making a new gem, checkout our
